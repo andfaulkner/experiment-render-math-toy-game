@@ -1,5 +1,11 @@
 // - Types
     // -   Concept
+    // -   boolean
+    // -   number
+    // -   string
+    // -   arrays
+    // -   objects
+    // -   null
 // - Defining typed variables
 // - Classes
 // - Type keyword
