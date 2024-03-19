@@ -1,9 +1,9 @@
 {
     "compilerOptions": {
-        "lib": ["es2023"],
+        "lib": ["es2023", "dom"],
         "outDir": "./build",
         "skipLibCheck": true,
-        "types": []
+        "types": ["node"]
     },
     "include": [
         "./node_modules/@types/**/*.d.ts",
