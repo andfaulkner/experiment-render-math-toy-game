@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "lib": ["es2023"],
+        "outDir": "./build",
+        "skipLibCheck": true,
+        "types": []
+    },
+    "include": [
+        "./node_modules/@types/**/*.d.ts",
+        "./misc/*.ts",
+        "./misc/**/*.ts",
+        "./app/*.ts",
+        "./app/**/*.ts"
+    ],
+    "exclude": ["*.js", "*.json", "doc/*.ts"]
+}
