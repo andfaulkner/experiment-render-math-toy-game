@@ -108,13 +108,8 @@ janiceForklift.report();
 janiceForklift.openDriverDoor();
 janiceForklift.report();
 
-// Try to drive with door open - this fails (because it's a super-high-tech car).
-// As such, mileage doesn't go up.
-janiceForklift.drive(16, 1.5);
-janiceForklift.report();
-
-// Close door, then try to drive - this succeeds, and mileage goes up.
-janiceForklift.closeDriverDoor();
+// Try to drive with door open - this succeeds because forklifts don't
+// have the closed door restriction. As such, mileage goes up.
 janiceForklift.drive(16, 1.5);
 janiceForklift.report();
 
