@@ -53,5 +53,3 @@ andrewCar.report();
 
 // Can't be called, because it's a private attribute.
 // andrewCar.isDriverDoorOpen;
-
-//
