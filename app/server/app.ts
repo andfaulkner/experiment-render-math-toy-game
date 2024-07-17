@@ -1,5 +1,13 @@
 import express from 'express';
 import cors from 'cors';
+import path from 'path';
+import {path as appRootPath} from 'app-root-path';
+
+import {config as dotEnvConfig} from 'dotenv';
+
+//--------------- Config ---------------//
+// Add dotenv config
+dotEnvConfig({path: path.join(appRootPath, './config/.env')});
 
 //
 // Set up stacktrace cleaning & tracing modules.
@@ -16,7 +24,7 @@ const app = express();
 //
 // Configuration
 //
-const port = 6933;
+const port = process.env['PORT'];
 
 //
 // Add middlewares.

@@ -1,12 +1,22 @@
-import webpack from "webpack";
-import path from "path";
+import webpack from 'webpack';
+import path from 'path';
+import {path as appRootPath} from 'app-root-path';
 
-import Dotenv from "dotenv-webpack";
+import {config as dotEnvConfig} from 'dotenv';
+
+import Dotenv from 'dotenv-webpack';
+
+//--------------- Config ---------------//
+// Add dotenv config
+dotEnvConfig({path: path.join(appRootPath, './config/.env')});
 
 //--------------- Plugins ---------------//
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
-import CopyPlugin from "copy-webpack-plugin";
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
+
+console.log(`process.env['NODE_ENV']:`, process.env['NODE_ENV']);
+console.log(`process.env:`, process.env);
 
 /**
  * Root Webpack configuration object.
@@ -17,15 +27,17 @@ const config: webpack.Configuration = {
   context: path.resolve(__dirname, '../app/client'),
 
   output: {
-    path: path.resolve(__dirname, `../public`),
+    path: path.resolve(__dirname, `../build`),
     pathinfo: false,
     publicPath: `/`,
     filename: `index.js`,
   },
 
+  mode: process.env['NODE_ENV'] as any,
+
   resolve: {
     // you can now require('file') instead of require('file.coffee')
-    extensions: ['.ts', '.tsx', '.json', '.js', '.jsx']
+    extensions: ['.ts', '.tsx', '.json', '.js', '.jsx'],
   },
 
   /**
@@ -34,17 +46,17 @@ const config: webpack.Configuration = {
   module: {
     rules: [
       // Handle text files
-      { test: /\.txt$/, use: "raw-loader" },
+      { test: /\.txt$/, use: 'raw-loader' },
 
       // Compile Typescript
       {
         test: /\.tsx?$/,
         use: [
           {
-            loader: "ts-loader",
+            loader: 'ts-loader',
             options: {
               transpileOnly: true,
-              configFile: path.resolve(__dirname, "../tsconfig.json"),
+              configFile: path.resolve(__dirname, '../tsconfig.json'),
             },
           },
         ],
@@ -54,13 +66,13 @@ const config: webpack.Configuration = {
       {
         test: /\.css?$/,
         use: [
-          "style-loader",
+          'style-loader',
           {
             loader: `css-loader`,
             options: {
               modules: {
                 localIdentName: `[path][name]__[local]--[hash:base64:5]`,
-                mode: "icss",
+                mode: 'icss',
                 /**
                  * Allow css-loader to export names from global class or id, so
                  * you can use that as local name.
@@ -97,7 +109,7 @@ const config: webpack.Configuration = {
      * Build a root HTML file.
      */
     new HtmlWebpackPlugin({
-      output: path.resolve(__dirname, `../public/index.html`),
+      output: path.resolve(__dirname, `../build/index.html`),
       templateContent: ({ htmlWebpackPlugin }) => `
         <html>
           <head>
