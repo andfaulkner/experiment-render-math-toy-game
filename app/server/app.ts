@@ -24,7 +24,7 @@ const app = express();
 //
 // Configuration
 //
-const port = process.env['PORT'];
+const port = process.env['PORT'] || 8081;
 
 //
 // Add middlewares.
