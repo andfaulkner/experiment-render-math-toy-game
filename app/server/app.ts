@@ -28,10 +28,10 @@ const port = process.env['PORT'] || 8081;
 
 //
 // Add middlewares.
-// Includes handler that serves the /public directory.
+// Includes handler that serves the /build directory.
 //
 app.use(cors());
-app.use(express.static('public'));
+app.use(express.static('build'));
 app.use(express.json());
 
 //

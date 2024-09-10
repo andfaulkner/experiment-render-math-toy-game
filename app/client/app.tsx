@@ -6,18 +6,23 @@
  */
 declare function require(name: string): any;
 
+// Import global CSS (which now acts as CSS Modules)
+import styles from './styles/index.css';
+console.log(`styles:`, styles);
+
+
 import ReactDOM from 'react-dom';
 
 /**
  *  Top-level component of application.
  */
 export const App = (): JSX.Element => {
-  return (
-    <div>
-      <h1>Server is running</h1>
-      <p>Placeholder text</p>
-    </div>
-  );
+    return (
+        <div>
+            <h1>Server is running!</h1>
+            <p>Placeholder text</p>
+        </div>
+    );
 };
 
 //
