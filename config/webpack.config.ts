@@ -89,7 +89,7 @@ const config: webpack.Configuration = {
                         loader: 'postcss-loader',
                         options: {
                             postcssOptions: {
-                                config: path.resolve(__dirname, '../app/client/postcss.config.js'),
+                                config: path.resolve(__dirname, '../postcss.config.js'),
                             },
                         },
                     },
